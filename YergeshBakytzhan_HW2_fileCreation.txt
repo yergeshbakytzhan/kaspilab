@@ -1,0 +1,15 @@
+//счетчик
+set counter = 0;
+//цикл для загрузки файла
+for yeary = 1 to 5
+	for monthy = 1 to 12
+    	counter = counter + 1; //увеличение при срабатывании цикла
+    	NoConcatenate  //без конкатинации
+    	OrderHeader$(counter):
+        Load 
+        *
+        FROM [lib://Course_Kaspi (win-livfrvqfmko_administrator)/OrderHeaderFinal.qvd](qvd)
+        WHERE OrderDate >='$(monthy)/1/201$(yeary)' AND OrderDate <='$(monthy)/31/201$(yeary)'; //загрузка всех данных
+        Store OrderHeader$(counter) into [lib://Course_Kaspi (win-livfrvqfmko_administrator)/Bakytzhan_Yergesh_$(monthy)_201$(yeary).qvd](qvd); //создание файлов под каждый месяц
+    next
+next
